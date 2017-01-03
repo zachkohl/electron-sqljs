@@ -14,16 +14,49 @@
 	<div class="container">
 		<section class="main"></section>
 		<h1>Electron boilerplate</h1>
-		<div id="dbrows">
-			<h2>Database Rows</h2>
-		</div>
-		<script>
+		<div id="dbrows"></div>
+        <br>
+        <table><div id="table"></div></table>
+ 
+        
+        
+        
+        <script>
+            $(document).ready(function(){
+            //displays object as string                  
+            var res = db.exec("SELECT * FROM lorem"); 
+            document.getElementById('dbrows').innerHTML = JSON.stringify(res);
+            
+                //convert to table
+                //convert to table
+            var tbl_body = "";
+            var odd_even = false;
+            $.each(res, function() {
+            var tbl_row = "";
+            $.each(this, function(k , v) {
+            tbl_row += "<td>"+v+"</td>";
+        })
+        tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
+        odd_even = !odd_even;               
+    })
+    $("#table").html(tbl_body);
+       });     
+        </script>       
+ 
+      <!-- his stuff  	<script>
+
+            
 			$(document).ready(function() {
 				db.each("SELECT rowid AS id, info FROM lorem", function(row) {
 					$('#dbrows').append(row.id + ": " + row.info + "<br />");
+                
+
+                });
 				});
-			});
-		</script>
+                
+
+                
+		</script> -->
 		<footer></footer>
 	</div>
 </body>

@@ -14,7 +14,7 @@
   } else {
   	var db = new SQL.Database();
   }
-
+/*
   try {
   	db.run("CREATE TABLE lorem (info INT)");
   } catch (e) {
@@ -28,6 +28,9 @@
   db.each("SELECT * FROM lorem", function(row) {
   	console.log(row.info + " is an integer!");
   });
+*/
+
+
 
   try {
   	fs.unlinkSync(path.join(__dirname, 'filename.sqlite'));
